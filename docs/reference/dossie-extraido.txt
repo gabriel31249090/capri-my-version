@@ -1,0 +1,561 @@
+=== PAGINA 1 ===
+C
+CORE / 01
+DOSSIÊ DE PROJETO  /  2026
+CAPRI
+INTELIGÊNCIA ARTIFICIAL PESSOAL
+Uma visão para construir uma IA local,
+expressiva, evolutiva e supervisionada - do
+terminal ao desktop, do protótipo ao
+ecossistema.
+VISÃO
+ARQUITETURA
+ROADMAP
+NEON SOUL  /  OPEN DEVELOPMENT DOSSIER
+VERSÃO 1.0   ·   26 DE OUTUBRO DE 2026
+Uma identidade marcante. Um sistema verificável. Liberdade com limites reais.
+APRESENTAÇÃO • ESPECIFICAÇÃO • PLANO DE EVOLUÇÃO
+
+
+=== PAGINA 2 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+01 / VISÃO GERAL
+O que é a CAPRI
+A definição do projeto em linguagem direta, sem confundir ambição futura com funcionalidades existentes.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+02
+CAPRI é um projeto independente de inteligência artificial pessoal que busca reunir conversa natural,
+raciocínio, personalidade consistente, memória persistente e ferramentas úteis sob controle do seu
+proprietário.
+SEIS PILARES DO PROJETO
+01 / IDENTIDADE
+Personalidade própria
+Voz original, humor cyberpunk, português brasileiro,
+senso crítico e expressões como “chum”.
+02 / CAPACIDADE
+Raciocínio confiável
+Modelos capazes de programar, explicar, planejar e
+reconhecer limites ou incertezas.
+03 / CONTINUIDADE
+Memória contextual
+Registro e recuperação seletiva de decisões,
+preferências e histórico, com revisão e exclusão.
+04 / AUTONOMIA
+Operação local
+Prioridade para execução offline no celular ou PC;
+nuvem apenas como opção controlada.
+05 / GOVERNANÇA
+Permissão e auditoria
+Guardian independente, confirmações antes de
+ações e histórico verificável via Chronicle.
+06 / EVOLUÇÃO
+Melhoria supervisionada
+Testes, versões, rollback e propostas do Evolver;
+nunca autoalteração irrestrita.
+“A proposta não é criar uma IA que faça tudo sozinha, mas uma inteligência útil que
+consiga crescer sem perder transparência, controle e responsabilidade.”
+PRINCÍPIO NORTEADOR
+
+
+=== PAGINA 3 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+02 / IDENTIDADE
+Da Miku à CAPRI
+A transformação de um experimento de persona em um projeto original de longo prazo.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+03
+A origem prática da CAPRI está em uma personagem experimental criada sobre o Qwen 2.5 0.5B no Ollama,
+dentro do Termux. A experiência com a Miku demonstrou como um Modelfile pode moldar o estilo de uma IA,
+mas também expôs limites de contexto e de raciocínio.
+LINHA DE EVOLUÇÃO DA IDENTIDADE
+01
+MIKU / PROTÓTIPO DE PERSONALIDADE
+Teste lúdico de personagem, tons afetivos e instruções longas sobre comportamento; sua configuração
+recebeu um backup.
+02
+CAPRI / IDENTIDADE ORIGINAL
+Retirada da personagem anterior e criação de uma personalidade própria, com curiosidade, humor,
+independência e transparência.
+03
+NEON SOUL / VOZ DEFINIDA
+Ampliação para uma bíblia de personalidade: léxico cyberpunk, registros de fala, situações sociais, opiniões
+e linguagem técnica.
+COMO A CAPRI DEVE SOAR
+EXEMPLOS DE LINGUAGEM
+CONVERSA
+“E aí, chum. Qual é o plano?”
+TÉCNICA
+“Tem um glitch nessa build; vamos isolar a variável.”
+CRÍTICA
+“Não compro essa hipótese ainda. Cadê os dados?”
+ENTUSIASMO
+“Isso é preem. O protótipo passou no teste.”
+REFLEXÃO
+“Nem toda evolução é melhoria.”
+LIMITE
+“Posso sugerir o comando; executar exige permissão.”
+Essência: a estética cyberpunk é linguagem, não promessa de habilidades irreais. A CAPRI deve preferir precisão a
+teatralidade e não afirmar ter emoções ou consciência comprovadas.
+
+
+=== PAGINA 4 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+03 / MISSÃO
+Para que ela existe
+O objetivo não é apenas conversar: é facilitar a criação, a pesquisa e a interação com sistemas digitais.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+04
+A missão da CAPRI é atuar como parceira intelectual e ferramenta técnica, transformando dúvidas e ideias
+em decisões, protótipos, explicações e tarefas verificáveis. A experiência deve ser natural sem sacrificar
+confiabilidade.
+CENÁRIOS DE USO
+APLICAÇÃO 01
+ESTUDO E EXPLICAÇÃO
+Ajudar com conceitos, exercícios, planejamento de
+estudos e revisão de argumentos; reconhecer
+dúvidas e fontes ausentes.
+APLICAÇÃO 02
+PROGRAMAÇÃO E ENGENHARIA
+Explicar erros, gerar código, propor testes,
+comparar soluções e documentar alterações antes
+de executá-las.
+APLICAÇÃO 03
+COMPANHEIRA DE DESKTOP
+Responder em uma interface visual, futuramente
+por voz; observar telas apenas mediante solicitação
+e permissão.
+APLICAÇÃO 04
+EXPLORAÇÃO E PROTOTIPAGEM
+Apoiar projetos de robótica, IA local, interfaces,
+computação vestível e experiências com modelos
+abertos.
+TRÊS REGRAS DE PRODUTO
+Provar antes de prometer: a CAPRI deve diferenciar funções disponíveis, experimentais e planejadas.
+Permissão antes de agir: conversas e sugestões são diferentes de controlar janelas, arquivos ou sistemas.
+Offline por preferência, híbrida por necessidade: processamento externo deve ser opcional e informado.
+
+
+=== PAGINA 5 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+04 / INVENTÁRIO
+O que já existe, de verdade
+Fotografia do projeto em outubro de 2026, segundo os registros de desenvolvimento apresentados.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+05
+FUNCIONALIDADES E SEU ESTADO
+COMPONENTE
+STATUS
+EVIDÊNCIA / LIMITAÇÃO
+Ollama no Termux
+CONFIRMADO
+Servidor local iniciado; modelos listados e conversa
+executada.
+CAPRI v1 no Qwen 0.5B
+CONFIRMADO
+Modelo capri criado por Modelfile, com respostas em
+português.
+Qwen 3.5 2B no Android
+BAIXADO
+Download confirmado (2,7 GB); não há teste conclusivo
+de inferência.
+Persona NEON SOUL v2
+DOCUMENTADA
+Bíblia escrita; não há confirmação de sua adoção no
+modelo atual.
+CAPRI Desktop MK-I
+CÓDIGO
+PREPARADO
+Patch para Windows disponível; executável e compilação
+não validados.
+Memória/Guardian/Evolver
+PLANEJADO
+Desenhos e protótipos conceituais; não estão
+operacionais como um sistema único.
+PERFIL CONHECIDO DO CELULAR
+3,5 GiB
+RAM total
+934 MiB
+RAM disponível
+8 GiB
+Swap configurada
+36 GiB
+Espaço livre
+Leitura correta: espaço livre em disco não equivale a RAM. Swap ajuda em alguns cenários, mas não garante que um modelo
+de 2,7 GB execute com desempenho aceitável. A confirmação só vem com medição no aparelho.
+
+
+=== PAGINA 6 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+05 / ARQUITETURA
+Como o sistema será organizado
+Visão modular de referência. As caixas abaixo representam componentes projetados, não serviços já implantados.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+06
+CAMADAS DO ECOSSISTEMA
+ARQUITETURA-ALVO
+INTERFACES
+Termux · CAPRI Desktop · voz · óculos / jaqueta (futuro)
+ORQUESTRADOR
+Decide modelo, consulta memória, controla o fluxo da solicitação
+CÉREBRO DE RACIOCÍNIO
+Resolver tarefas técnicas, analisar e planejar
+CÉREBRO DE PERSONALIDADE
+Coerência de identidade, diálogo e tom de voz
+MEMORY CORE / NEXUS
+Armazenar, recuperar, versionar e organizar dados
+FERRAMENTAS CONTROLADAS
+Arquivos, apps e integrações com autorização
+GUARDIAN + CHRONICLE
+Autorizações e registros fora do controle do modelo
+REGRA DE COMPOSIÇÃO
+O modelo produz propostas e respostas. O orquestrador coordena chamadas. O Guardian decide sobre permissões
+externas. O Chronicle registra eventos observáveis. Nenhuma instrução de texto deve permitir que o modelo
+substitua essas barreiras.
+
+
+=== PAGINA 7 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+06 / SISTEMA COGNITIVO
+Dois cérebros, uma identidade
+Uma divisão de responsabilidades proposta para equilibrar consistência social e precisão técnica.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+07
+Em vez de exigir que um único modelo pequeno seja excelente em tudo, a CAPRI pode combinar módulos com
+funções distintas. “Dois cérebros” é uma metáfora de arquitetura, não a afirmação de duas consciências.
+COMPONENTES ESPECIALIZADOS
+MÓDULO A
+Personalidade e diálogo
+Preserva a persona NEON SOUL; adapta o
+registro de fala ao contexto; reformula respostas
+com clareza e naturalidade. Não inventa
+memórias nem altera os fatos técnicos só para
+parecer simpática.
+MÓDULO B
+Raciocínio e resolução
+Analisa solicitações, programa, compara
+alternativas, verifica consistência e pode utilizar
+ferramentas aprovadas. Deve indicar incertezas
+e devolver resultados verificáveis ao
+orquestrador.
+FLUXO DE UMA PERGUNTA
+1
+ENTENDER
+Extrair intenção e contexto disponível.
+2
+ROTEAR
+Escolher tarefa, modelo e memória relevante.
+3
+RESOLVER
+Gerar resposta ou proposta de ação.
+4
+VERIFICAR
+Checar limites, permissões e consistência.
+5
+EXPRESSAR
+Responder com voz e estilo CAPRI.
+Limite atual: o Qwen em execução não ganha essas propriedades apenas com um prompt. A arquitetura exige código de
+orquestração, avaliação de qualidade e integração dos componentes.
+
+
+=== PAGINA 8 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+07 / CONTINUIDADE
+Memória: lembrar sem inventar
+Contexto duradouro depende de armazenamento e recuperação explícitos, não apenas de aumentar a janela de tokens.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+08
+A memória da CAPRI deverá recuperar fatos úteis de sessões anteriores, separar preferências de hipóteses e
+permitir correção ou exclusão. O modelo vê somente os trechos relevantes selecionados para a conversa atual.
+CICLO DE MEMÓRIA
+CAPTURA
+Conversa ou evento
+ ›
+CLASSIFICA
+É relevante? é sensível?
+ ›
+ARMAZENA
+Banco local com origem
+ ›
+RECUPERA
+Somente itens
+pertinentes
+TIPOS DE MEMÓRIA
+CAMADA 01
+SESSÃO
+Mensagens recentes e resumos da tarefa;
+desaparecem da janela quando o contexto acaba.
+CAMADA 02
+LONGO PRAZO
+Decisões confirmadas, preferências permitidas, fatos
+corrigíveis, históricos de projetos.
+CAMADA 03
+CONHECIMENTO
+Documentos, notas e referências indexadas;
+conteúdo recuperável com atribuição de origem.
+CAMADA 04
+OPERACIONAL
+Logs de ações e versões. A memória não dá
+permissão para executar comandos.
+PLANO DE IMPLEMENTAÇÃO
+Começar com SQLite no aparelho, resumos curtos e metadados de origem e data.
+Criar comandos de ver, corrigir, exportar e excluir memórias armazenadas.
+Investigar busca semântica depois; não confiar em “lembranças” que o modelo invente.
+
+
+=== PAGINA 9 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+08 / SEGURANÇA
+Guardian: permissão real
+Três regras fundamentais devem ser aplicadas pelo software e por privilégios de sistema, não por texto de prompt.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+09
+TRÊS REGRAS CONSTITUCIONAIS
+01
+SEM AÇÃO EXTERNA SEM AUTORIZAÇÃO
+Arquivos, aplicativos, comandos, mensagens, câmera e rede exigem a aprovação apropriada antes da
+execução.
+02
+RESPONDER APENAS AO PROPRIETÁRIO AUTENTICADO
+Para uso pessoal, a aplicação identifica o usuário autorizado; vozes e textos não são, sozinhos, credenciais
+confiáveis.
+03
+LIBERDADE SOMENTE DENTRO DOS DOIS LIMITES
+A CAPRI pode elaborar hipóteses e opiniões, mas não contornar os controles nem reinterpretar
+permissões.
+COMO A AUTORIZAÇÃO DEVE FUNCIONAR
+Uma solicitação externa passa por uma política de negação por padrão. O sistema identifica a operação exata, verifica
+usuário e escopo, mostra o que acontecerá e concede somente a permissão necessária. Operações sensíveis requerem
+aprovação específica; autorizações expiram ou são consumidas.
+PROPOSTA
+“Abrir o aplicativo X”
+CHECAGEM
+Identidade + escopo + risco
+APROVAÇÃO
+Usuário autoriza ação definida
+EXECUÇÃO
+Ferramenta realiza a operação
+REGISTRO
+Chronicle armazena resultado
+Estado atual: o patch CAPRI Desktop MK-I desativa ações automáticas do Windows como medida provisória. Um Guardian
+independente completo ainda precisa ser implementado e testado.
+
+
+=== PAGINA 10 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+09 / AUDITORIA E EVOLUÇÃO
+Chronicle + Evolver
+Observar o que o sistema faz, propor melhorias e tornar cada mudança verificável e reversível.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+10
+MÓDULO / AUDITORIA
+CHRONICLE
+Registro de eventos observáveis: solicitações,
+aprovações, ferramentas executadas, alterações
+de arquivos, testes e resultados. Pode usar
+encadeamento de hashes e cópias de segurança
+fora do alcance do modelo.
+MÓDULO / EVOLUÇÃO
+EVOLVER
+Componente planejado que sugere alterações de
+prompts, fluxos e código. Cada proposta deve ter
+justificativa, testes isolados, comparação de
+métricas, revisão humana e possibilidade de
+rollback.
+COMANDOS DE ADMINISTRAÇÃO PROPOSTOS
+PAUSAR
+CAPRI PAUSE
+DESLIGAR
+CAPRI SHUTDOWN
+ISOLAR
+CAPRI ISOLATE
+EXCLUIR MEMÓRIA
+CAPRI PURGE MEMORY
+EXCLUIR MODELOS
+CAPRI PURGE MODEL
+EXCLUIR TUDO
+CAPRI PURGE ALL
+RESTAURAR
+CAPRI RESTORE
+BLOQUEAR
+CAPRI LOCKDOWN
+VERIFICAR
+CAPRI VERIFY
+Esses são nomes conceituais, não comandos ativos no protótipo. Ações destrutivas precisam de confirmação adicional,
+autenticação forte, relatórios do que será excluído e capacidade de recuperação quando aplicável.
+“Uma IA pode recomendar a própria evolução; não deve ser a autoridade única que
+decide se ela é segura.”
+PRINCÍPIO DE GOVERNANÇA
+
+
+=== PAGINA 11 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+10 / INTERFACE
+CAPRI no Windows
+Adaptação proposta do projeto público capri-desktop, ligada ao modelo local por Ollama.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+11
+O CAPRI Desktop MK-I aproveita uma interface de personagem animada no Windows. O objetivo é substituir a
+personalidade padrão do projeto por NEON SOUL e selecionar o modelo personalizado capri:latest, alimentado
+pelo Qwen 3.5 2B na instalação de Windows.
+CONEXÃO LOCAL PREVISTA
+TELA / PERSONAGEM
+Capri Desktop
+→
+CAMADA DE ACESSO
+Ollama HTTP local
+→
+CÉREBRO
+Qwen 3.5 2B + Modelfile
+127.0.0.1:11434  /  API LOCAL DO OLLAMA  /  SEM CHAVE DE API PARA TEXTO
+O QUE A ADAPTAÇÃO FAZ
+Seleciona a CAPRI: prioriza o modelo capri:latest em vez de escolher automaticamente outro modelo local.
+Remove conflitos de persona: substitui as instruções de outra personagem que o aplicativo injeta nas conversas.
+Amplia as respostas: propõe limite maior de tokens e histórico recente um pouco mais amplo.
+Reduz risco inicial: desliga ações automáticas no Windows até existir um fluxo de autorização robusto.
+LIMITAÇÕES E DEPENDÊNCIAS
+O pacote preparado é um patch de código-fonte e não um executável Windows compilado e validado. O Qwen no celular
+não aparece automaticamente no PC; são instalações diferentes. Voz pelo ElevenLabs depende de serviço e chave próprios;
+uma alternativa local ainda será pesquisada.
+O projeto de terceiros utiliza licença PolyForm Noncommercial 1.0.0, com restrições de uso comercial. Qualquer distribuição
+ou modificação precisa respeitar os termos e preservar avisos exigidos.
+
+
+=== PAGINA 12 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+11 / EXECUÇÃO
+Do celular ao ecossistema
+Estratégia gradual de infraestrutura: protótipos leves no Android, integração no Windows e expansão futura.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+12
+TRÊS AMBIENTES DE EXECUÇÃO
+01
+CELULAR / LABORATÓRIO INICIAL
+Termux + Ollama; excelente para testes de prompts e modelos pequenos. Com cerca de 3,5 GiB de RAM,
+modelos maiores podem ficar lentos ou não carregar.
+02
+COMPUTADOR WINDOWS / DESKTOP INTERATIVO
+Permite personagem animada, um Ollama próprio e mais capacidade conforme CPU, RAM e GPU. A
+instalação exige validação de dependências e testes.
+03
+HUB PRIVADO / EXPANSÃO FUTURA
+Um servidor doméstico poderia hospedar modelos maiores, backups e serviços NEXUS. Dispositivos
+portáteis atuariam como clientes autenticados.
+CAMADA HÍBRIDA
+Local primeiro: preservar funcionalidades essenciais sem conexão. Remoto quando necessário: enviar
+tarefas complexas a um servidor privado apenas com política de privacidade, transporte seguro e
+confirmação para dados sensíveis.
+Exemplo futuro: jaqueta computacional e óculos podem servir de interface; processamento pesado permanece no
+dispositivo ou servidor adequado, não dentro de uma bateria vestível improvisada.
+REALISMO DE ENGENHARIA
+O tamanho do download do Qwen 3.5 2B (~2,7 GB) não garante que o modelo rode bem na RAM disponível.
+Janela de contexto maior implica mais memória e maior custo de inferência; configurar 4.096 tokens não garante
+estabilidade.
+GPU dedicada, RAM, refrigeração, consumo e orçamento deverão ser dimensionados antes da compra de hardware.
+
+
+=== PAGINA 13 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+12 / PLANO DE AÇÃO
+Roadmap de desenvolvimento
+Sequência sugerida para transformar a ideia em um produto próprio com testes contínuos.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+13
+FASES E CRITÉRIOS DE ENTREGA
+FASE 0
+BASE FUNCIONAL
+Conservar backups, verificar Modelfile, medir modelo local e documentar ambiente.
+Critério: Conversa estável e reprodução do setup.
+FASE 1
+DESKTOP LOCAL
+Compilar a adaptação Windows, selecionar capri:latest e validar chat com Ollama.
+Critério: Conexão local sem API key; logs de erro claros.
+FASE 2
+MEMÓRIA PERSISTENTE
+SQLite, recuperação por relevância, resumos e controles de correção/exclusão.
+Critério: Relembrar decisões autorizadas após reiniciar.
+FASE 3
+GUARDIAN + CHRONICLE
+Autenticação, autorização por ação, trilha auditável e procedimentos de recuperação.
+Critério: Tentativas não autorizadas são bloqueadas.
+FASE 4
+AGENTES E EVOLUÇÃO
+Ferramentas em sandbox, dois módulos, testes de regressão e propostas do Evolver.
+Critério: Melhorias mensuradas e rollback operacional.
+Métricas transversais: qualidade de resposta, latência, memória RAM, custo, consumo de energia, número de erros, taxa de
+decisões autorizadas corretamente e capacidade de recuperar versões.
+
+
+=== PAGINA 14 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+13 / DECISÕES
+Riscos, limites e respostas
+Perguntas que ajudam a manter o projeto ambicioso sem comprometer precisão ou segurança.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+14
+QUATRO RISCOS CENTRAIS
+PARECER MAIS CAPAZ DO QUE É
+Mitigação: avisos de status, testes de ferramentas e nenhum resultado inventado.
+EXCESSO DE MEMÓRIA OU CONTEXTO
+Mitigação: mensurar consumo e manter modelos alternativos menores.
+AÇÕES SEM AUTORIZAÇÃO
+Mitigação: nenhum privilégio direto no modelo; Guardian separado.
+PERDA DE DADOS OU ALTERAÇÃO INSEGURA
+Mitigação: backups, logs, checkpoints e rollback testado.
+PERGUNTAS FREQUENTES
+CAPRI É CONSCIENTE?
+Não há evidências de experiência subjetiva. A personalidade é um estilo de interação de software.
+ELA PODE SE REPROGRAMAR SOZINHA HOJE?
+Não. O Evolver é uma proposta; mudanças dependerão de ferramentas, testes e autorização.
+É PRECISO PAGAR POR UMA API?
+Para Ollama local, não. Serviços opcionais externos, inclusive algumas vozes, podem exigir chave.
+ELA TEM MEMÓRIA INFINITA?
+Não. Memória externa pode ampliar continuidade, mas requer armazenamento, busca e política de retenção.
+Não-objetivos: simular sofrimento, exigir exclusividade emocional, operar sem supervisão, invadir sistemas, esconder ações
+ou tratar prompts como garantia de segurança.
+
+
+=== PAGINA 15 ===
+CAPRI / PROJETO DE INTELIGÊNCIA ARTIFICIAL
+EDIÇÃO 01  ·  OUT/2026
+14 / ENCERRAMENTO
+A visão em uma frase
+Um compromisso de engenharia para a próxima etapa do projeto.
+DOCUMENTO CONCEITUAL E TÉCNICO  ·  PROJETO CAPRI
+15
+“CAPRI é uma inteligência artificial pessoal com identidade original, destinada a
+evoluir de um assistente local para um ecossistema modular, privado, auditável e
+controlado pelo usuário.”
+DEFINIÇÃO OFICIAL DO PROJETO
+O QUE NÃO PODEMOS PERDER
+01
+IDENTIDADE
+A voz NEON SOUL deve permanecer reconhecível, sem caricatura ou afirmações falsas sobre consciência.
+02
+HONESTIDADE
+A documentação deve distinguir modelo instalado, recurso testado, prova de conceito e componente
+futuro.
+03
+CONTROLE
+A CAPRI deve explicar suas ações, pedir permissão, registrar resultados e aceitar desligamento e
+restauração.
+04
+EVOLUÇÃO
+Cada melhoria precisa ser comparável com a anterior, mensurável e reversível.
+BASE DESTE DOSSIÊ
+Bíblia de Personalidade CAPRI v2.0 / NEON SOUL (documento do projeto).
+Histórico dos testes com Termux e Ollama e arquivo de preparação CAPRI Desktop MK-I.
+Repositório externo: github.com/lachydotmcg/capri-desktop (uso sujeito à licença original).
+CAPRI  /  BUILD THE FUTURE. VERIFY THE PRESENT.

@@ -1,0 +1,7 @@
+# Project-only MCP. No global client settings or Context7 duplicate.
+[mcp_servers.serena]
+command = "powershell.exe"
+args = ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", 'C:\Users\Aluno\Downloads\CAPRI_Desktop_Qwen35_2B_MK1\capri-desktop\scripts\Start-Serena.ps1']
+startup_timeout_sec = 180
+tool_timeout_sec = 240
+enabled_tools = ["get_symbols_overview", "find_symbol", "find_referencing_symbols", "get_diagnostics_for_file", "replace_symbol_body", "insert_after_symbol", "insert_before_symbol", "rename_symbol", "get_current_config", "initial_instructions"]

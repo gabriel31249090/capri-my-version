@@ -1,0 +1,19 @@
+{
+  "name": "capri-development-tools",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local development and context tools for Capri",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "context": "node scripts/context.mjs",
+    "context:measure": "node scripts/context.mjs --measure",
+    "ast:scan": "ast-grep scan --config sgconfig.yml app cross",
+    "check:workflow": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/Test-Workflow.ps1"
+  },
+  "devDependencies": {
+    "@ast-grep/cli": "0.51.0",
+    "repomix": "1.18.1"
+  }
+}

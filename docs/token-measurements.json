@@ -1,0 +1,82 @@
+[
+    {
+        "generatedAt":  "2026-10-26T14:12:10.301Z",
+        "repository":  "capri-desktop",
+        "repomixVersion":  "1.18.1",
+        "profile":  "default",
+        "tokenizer":  "o200k_base",
+        "comparison":  "Same repository, tokenizer, output format and ignores; only include patterns differ.",
+        "baseline":  {
+                         "profile":  "baseline",
+                         "generatedAt":  "2026-10-26T14:12:09.852Z",
+                         "encoding":  "o200k_base",
+                         "compress":  false,
+                         "configurationSha256":  "cbf72dabeb548d8ddadfe636195861db4d4f6b1f49506ee45075906b9e93afbe",
+                         "manifestSha256":  "5b35272bffb3f52cf62a0b5833c14fc3c546cf561d7d5f7c4bc296242f339ea0",
+                         "output":  ".artifacts/context/baseline.xml",
+                         "outputSha256":  "a94b414fc46d7d3d5df663e7b559340959d6b8e85e582f5c545df9a6f490cc29",
+                         "totalFiles":  81,
+                         "totalTokens":  336006,
+                         "elapsedMs":  1004,
+                         "manifest":  ".artifacts/context/baseline.manifest.json"
+                     },
+        "selected":  {
+                         "profile":  "default",
+                         "generatedAt":  "2026-10-26T14:12:10.298Z",
+                         "encoding":  "o200k_base",
+                         "compress":  false,
+                         "configurationSha256":  "1fbea393b3e75c6a2822ebdb31fdb75132629ea442a0203d55b174343547c2cf",
+                         "manifestSha256":  "bf711a5a89b64a5074e361a56763b24adca2c58ff6b4a4d1478010b3111ce47c",
+                         "output":  ".artifacts/context/default.xml",
+                         "outputSha256":  "108fe4261a40f17aaf9d78fb0f96e36811d3bfc326c75d0b4671f21f77aa094a",
+                         "totalFiles":  14,
+                         "totalTokens":  11433,
+                         "elapsedMs":  439,
+                         "manifest":  ".artifacts/context/default.manifest.json"
+                     },
+        "reduction":  {
+                          "tokens":  324573,
+                          "percent":  96.6
+                      }
+    },
+    {
+        "generatedAt":  "2026-10-26T14:12:12.581Z",
+        "repository":  "capri-desktop",
+        "repomixVersion":  "1.18.1",
+        "profile":  "brain",
+        "tokenizer":  "o200k_base",
+        "comparison":  "Same repository, tokenizer, output format and ignores; only include patterns differ.",
+        "baseline":  {
+                         "profile":  "baseline",
+                         "generatedAt":  "2026-10-26T14:12:12.109Z",
+                         "encoding":  "o200k_base",
+                         "compress":  false,
+                         "configurationSha256":  "cbf72dabeb548d8ddadfe636195861db4d4f6b1f49506ee45075906b9e93afbe",
+                         "manifestSha256":  "5b35272bffb3f52cf62a0b5833c14fc3c546cf561d7d5f7c4bc296242f339ea0",
+                         "output":  ".artifacts/context/baseline.xml",
+                         "outputSha256":  "a94b414fc46d7d3d5df663e7b559340959d6b8e85e582f5c545df9a6f490cc29",
+                         "totalFiles":  81,
+                         "totalTokens":  336006,
+                         "elapsedMs":  1229,
+                         "manifest":  ".artifacts/context/baseline.manifest.json"
+                     },
+        "selected":  {
+                         "profile":  "brain",
+                         "generatedAt":  "2026-10-26T14:12:12.579Z",
+                         "encoding":  "o200k_base",
+                         "compress":  false,
+                         "configurationSha256":  "821b46cd640d5be9e276a454618eb109926704d0d508a4ab5a96d9ac9a3ea880",
+                         "manifestSha256":  "fc66a9c2dca970fdef811b3cc4c14be9befa693f30c2d155e6a7d37c96902481",
+                         "output":  ".artifacts/context/brain.xml",
+                         "outputSha256":  "6918568bdd7f34e22232ac22f053adfc8d80eff9026f1acbd9b580cf0abea346",
+                         "totalFiles":  18,
+                         "totalTokens":  34277,
+                         "elapsedMs":  464,
+                         "manifest":  ".artifacts/context/brain.manifest.json"
+                     },
+        "reduction":  {
+                          "tokens":  301729,
+                          "percent":  89.8
+                      }
+    }
+]

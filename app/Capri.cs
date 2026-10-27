@@ -26,6 +26,19 @@ namespace CapriDesktop
             try { Native.SetProcessDpiAwarenessContext(new IntPtr(-4)); } catch (EntryPointNotFoundException) { Native.SetProcessDPIAware(); }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            if (args.Length == 2 && args[0] == "--neon-smoke")
+            {
+                string output = Path.GetFullPath(args[1]);
+                Directory.CreateDirectory(output);
+                try
+                {
+                    using (NeonRuntime runtime = new NeonRuntime(AppDomain.CurrentDomain.BaseDirectory,
+                        Path.Combine(output, "state"), new Brain(), delegate { return false; }, delegate { return null; }))
+                    using (NeonConsole panel = new NeonConsole(runtime)) panel.SmokeRender(output);
+                    return 0;
+                }
+                catch (Exception error) { File.WriteAllText(Path.Combine(output, "failure.txt"), error.ToString()); return 1; }
+            }
             bool smoke = args.Length == 2 && args[0] == "--smoke-test";
             string identity = WindowsIdentity.GetCurrent().User.Value;
             bool first;
@@ -443,7 +456,8 @@ namespace CapriDesktop
         private double speechStart;
         private const double LettersPerSecond = 28;
         private const double MouthRate = 12;
-        private readonly Brain brain = new Brain { Act = Hands.Do };
+        private readonly Brain brain = new Brain();
+        private NeonRuntime neon;
         private System.Collections.Generic.List<string> cloudModels;
         private readonly System.Collections.Generic.HashSet<string> stalled = new System.Collections.Generic.HashSet<string>();
         private readonly TalkPill pill = new TalkPill();
@@ -532,6 +546,7 @@ namespace CapriDesktop
         internal Companion(string data, EventWaitHandle signal, bool smoke)
         {
             testing = smoke;
+            brain.Act = AuthorizedTool;
             speaker = new Speaker(smoke);
             restore = signal;
             settingsPath = Path.Combine(data, "settings.json");
@@ -624,6 +639,10 @@ namespace CapriDesktop
             Hands.Resume = ResumeJob;
             string textKey = Voice.Unprotect(preferences.TextKey);
             if (textKey != null) brain.Remote = new Cloud(textKey, preferences.TextModel);
+            neon = new NeonRuntime(AppDomain.CurrentDomain.BaseDirectory, Path.Combine(data, "neon-soul"), brain,
+                ConfirmTool, AuthenticateOwner);
+            mainframe.BindNeonRuntime(neon);
+            Microsoft.Win32.SystemEvents.SessionSwitch += OwnerSessionChanged;
             mainframe.ShowTextKey(textKey == null ? null : Voice.Tail(textKey));
             voice.VoiceId = string.IsNullOrEmpty(preferences.VoiceId) ? null : preferences.VoiceId;
             voice.Model = string.IsNullOrEmpty(preferences.VoiceModel) ? null : preferences.VoiceModel;
@@ -2446,10 +2465,76 @@ namespace CapriDesktop
             });
         }
 
+        private string AuthorizedTool(string tool, ToolArguments args)
+        {
+            int version = brain.CancellationVersion;
+            return AuthorizedTool(tool, args, delegate { return version == brain.CancellationVersion; });
+        }
+
+        private string AuthorizedTool(string tool, ToolArguments args, Func<bool> stillActive)
+        {
+            if (neon == null || IsDisposed || Disposing) return ToolPermission.Denied;
+            return neon.ExecuteTool(tool, args, delegate
+            { return !IsDisposed && !Disposing && (stillActive == null || stillActive()); });
+        }
+
+        private string AuthenticateOwner()
+        {
+            if (testing || IsDisposed || Disposing || !IsHandleCreated) return null;
+            if (InvokeRequired)
+            {
+                try { return (string)Invoke(new Func<string>(AuthenticateOwner)); }
+                catch (InvalidOperationException) { return null; }
+            }
+            return OwnerAuthentication.Verify(mainframe, OwnerAuthentication.CurrentSid());
+        }
+
+        private void OwnerSessionChanged(object sender, Microsoft.Win32.SessionSwitchEventArgs e)
+        {
+            if (e.Reason == Microsoft.Win32.SessionSwitchReason.SessionLock || e.Reason == Microsoft.Win32.SessionSwitchReason.SessionLogoff)
+            { if (neon != null) neon.Lock(); }
+        }
+
+        private bool ConfirmTool(string operation)
+        {
+            if (testing || IsDisposed || Disposing || !IsHandleCreated) return false;
+            if (InvokeRequired)
+            {
+                try { return (bool)Invoke(new Func<string, bool>(ConfirmTool), operation); }
+                catch (InvalidOperationException) { return false; }
+            }
+            if (IsDisposed || Disposing) return false;
+            using (Form consent = new Form())
+            {
+                consent.Text = "CAPRI — autorizar operação";
+                consent.StartPosition = FormStartPosition.CenterScreen;
+                consent.ClientSize = new Size(620, 390);
+                consent.MinimizeBox = false;
+                consent.MaximizeBox = false;
+                Label explanation = new Label { Dock = DockStyle.Top, Height = 62, Padding = new Padding(12), Text = "Autorizar somente esta operação? Uma tarefa de mouse/teclado pode ter vários passos. A tela pode ser enviada ao provedor configurado." };
+                TextBox details = new TextBox { Dock = DockStyle.Fill, Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Both, WordWrap = false, Text = operation };
+                FlowLayoutPanel buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 48, FlowDirection = FlowDirection.RightToLeft, Padding = new Padding(8) };
+                Button cancel = new Button { Text = "Cancelar", DialogResult = DialogResult.Cancel, AutoSize = true };
+                Button allow = new Button { Text = "Autorizar", DialogResult = DialogResult.OK, AutoSize = true };
+                buttons.Controls.Add(cancel);
+                buttons.Controls.Add(allow);
+                consent.Controls.Add(details);
+                consent.Controls.Add(explanation);
+                consent.Controls.Add(buttons);
+                consent.CancelButton = cancel;
+                consent.AcceptButton = cancel;
+                consent.Shown += delegate { cancel.Focus(); };
+                return consent.ShowDialog(this) == DialogResult.OK && !IsDisposed && !Disposing;
+            }
+        }
+
         private void Connect(string url, string voiceId)
         {
             Agent opened = new Agent();
-            opened.Act = Hands.Do;
+            opened.Act = delegate(string tool, ToolArguments args)
+            {
+                return AuthorizedTool(tool, args, delegate { return agent == opened && chatting && !dropping; });
+            };
             opened.Opened += delegate(int rate) { Post(delegate { if (agent == opened) ChatOpened(rate); }); };
             opened.Heard += delegate(string text) { Post(delegate { if (agent == opened) ChatHeard(text); }); };
             opened.Replied += delegate(string text) { Post(delegate { if (agent == opened) ChatReplied(text); }); };
@@ -2932,6 +3017,8 @@ namespace CapriDesktop
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged -= DisplaysChanged;
+            Microsoft.Win32.SystemEvents.SessionSwitch -= OwnerSessionChanged;
+            if (neon != null) neon.Dispose();
             StopRide();
             clickDelay.Stop();
             frames.Stop();

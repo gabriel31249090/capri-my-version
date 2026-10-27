@@ -1,0 +1,12 @@
+.tools/
+.artifacts/
+node_modules/
+**/bin/
+**/obj/
+.serena/cache/
+.serena/memories/
+.serena/logs/
+*.user
+*.suo
+__pycache__/
+*.pyc

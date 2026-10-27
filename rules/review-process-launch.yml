@@ -1,0 +1,7 @@
+id: capri-review-process-launch
+language: CSharp
+severity: info
+message: Review process launch arguments and the caller's authorization before changing this code.
+note: This is a review aid. It does not establish that a launch is unsafe or replace runtime authorization.
+rule:
+  pattern: Process.Start($$$ARGS)

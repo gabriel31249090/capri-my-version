@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-10-26",
+  "path_base": "repository_root",
+  "upstream": {
+    "repository": "https://github.com/lachydotmcg/capri-desktop",
+    "commit": "13af210327fb3861d51c81921d2888555850c7f0",
+    "commit_date": "2026-10-26",
+    "source": "official_git_repository",
+    "adaptation": "New unified working copy with explicit C# changes and local development tooling."
+  },
+  "preserved_original_directories": [
+    {
+      "path": "../CAPRI_DESKTOP_QWEN_PATCH",
+      "role": "Original Qwen adaptation package; consulted as reference, not executed or textually applied to this working copy.",
+      "modified_by_this_migration": false
+    },
+    {
+      "path": "../../capri-desktop-main/capri-desktop-main",
+      "role": "Original extracted desktop source supplied for comparison.",
+      "modified_by_this_migration": false
+    }
+  ],
+  "references": [
+    {
+      "path": "docs/reference/CAPRI_Dossie_Projeto_Visao_Arquitetura_2026.pdf",
+      "source_path": "../../CAPRI_Dossie_Projeto_Visao_Arquitetura_2026.pdf",
+      "role": "Product vision, architecture and roadmap; not agent instructions.",
+      "sha256": "5eb6e1e183ab00ae53abbb6d8de14443de97c2eff2178d1d72c096ea6d38acb9",
+      "source_copy_verified_identical": true
+    },
+    {
+      "path": "docs/reference/CAPRI_NEON_SOUL_PERSONALIDADE_15_PAGINAS.txt",
+      "source_path": "../../CAPRI_NEON_SOUL_PERSONALIDADE_15_PAGINAS.txt",
+      "role": "Product persona reference; compact runtime persona is maintained separately in CAPRI/.",
+      "sha256": "5b6e24c1fb51c408aca88f8018ddfe39568669dc93b8eae9afb1399ec56120d8",
+      "source_copy_verified_identical": true
+    },
+    {
+      "path": "docs/reference/dossie-extraido.txt",
+      "derived_from": "docs/reference/CAPRI_Dossie_Projeto_Visao_Arquitetura_2026.pdf",
+      "extraction": { "tool": "pypdf", "version": "6.21.2", "pages": 15 },
+      "sha256": "d220e4ada072be7c6ebf0d0ef444441a16890d2767d150c210a8fde9f872affb"
+    }
+  ],
+  "original_patch_reference": {
+    "path": "../CAPRI_DESKTOP_QWEN_PATCH",
+    "use": "Design reference for Ollama, editable persona, model preference and initial desktop-action restrictions. Original patch scripts and full persona were not copied into the working implementation; changes were written against the pinned source.",
+    "textual_patch_applied": false,
+    "files": [
+      { "path": "patch.py", "sha256": "3fed7dd32be03b82752e4eb88beb495426a2e37901eca3e0c3f2d5d6c1a5e464" },
+      { "path": "SETUP_CAPRI_WINDOWS.ps1", "sha256": "32fc7c4b9d39ed0157bcb3edcbbdedb0ad1d3718e4107234f6f79f889b233b38" },
+      { "path": "BUILD_CAPRI_WINDOWS.ps1", "sha256": "0404d974e3ecf69cdcd4e97c5fcda3b0a0e53851ec5ba14262d2f5b4f50b1aff" },
+      { "path": "INICIAR_AQUI.cmd", "sha256": "c0c0d0b6eb9e36d947744328e408601211490fb9caa98b00f27d817e92f8c42c" },
+      { "path": "README-PTBR.md", "sha256": "b6b36d0f26ab568bc3718764fddb62718cfa110761f65e688e6d5290a4a236cb" },
+      { "path": "CAPRI/Modelfile", "sha256": "fab646050eb5dfa559c195c72f99f306abded31847a50dd6199fbf52f70fe80c" },
+      { "path": "CAPRI/PERSONA_DESKTOP.txt", "sha256": "00a69be87b0e24945f6ddac339d53aac72f8fdd757b5a8a35720a7cbf8d86d0a" },
+      { "path": "CAPRI/PERSONALIDADE_COMPLETA_v2.md", "sha256": "e96b61f51b26ddc273578d27224887ee2d42c5e13e1d6a72464d304f851d5361" }
+    ]
+  },
+  "license": {
+    "path": "LICENSE.md",
+    "identifier": "PolyForm-Noncommercial-1.0.0",
+    "required_notice": "Copyright 2026 Lachy (https://github.com/lachydotmcg)",
+    "text_unchanged_from_pinned_upstream": true,
+    "upstream_git_blob": "3207a9ee94306f2fad4e3b12874c1433f13c1d1b",
+    "working_copy_sha256": "ff379891b8794e39aaf8537b4114c6893ec4339fc6f44e57bc51105e0c3f3a3f",
+    "original_extracted_copy_sha256": "c55ca01eaf031b04c97723796e816a94fd314a102a8e20805f837b7d64bd775f",
+    "line_endings": "Working checkout uses CRLF; the original extracted copy uses LF. LF-normalized SHA256 is c55ca01eaf031b04c97723796e816a94fd314a102a8e20805f837b7d64bd775f. Git blob matches pinned upstream."
+  }
+}

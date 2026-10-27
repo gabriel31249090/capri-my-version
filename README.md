@@ -1,3 +1,5 @@
+> **Adaptação CAPRI / NEON SOUL:** para compilar a base unificada e usar as ferramentas locais, veja [README-CAPRI.md](README-CAPRI.md). A documentação upstream está preservada abaixo.
+
 <p align="center">
   <img src="assets/chip-source.png" alt="Chip" width="40%" align="middle">
   <img src="assets/capri.png" alt="Capri" width="40%" align="middle">

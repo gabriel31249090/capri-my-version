@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Capri.Windows.csproj" />
+  <Project Path="Capri.Setup.csproj" />
+  <Project Path="cross/Capri.Cross.csproj" />
+  <Project Path="tests/Capri.Core.Tests/Capri.Core.Tests.csproj" />
+</Solution>

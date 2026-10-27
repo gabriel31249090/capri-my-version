@@ -334,7 +334,7 @@ namespace CapriDesktop
             return true;
         }
 
-        internal static bool Failed(string result) { return Regex.IsMatch(result ?? "", @"^(Which app|What should I play|Not (opening|playing) that|No app called|More than one|That didn't work|Couldn't|There's no|That isn't a website|Which job|Not doing that|Should I |Got lost|Ran out of steps|You pressed Esc|You grabbed the mouse|Using the mouse and keyboard isn't)|isn't open\.$|but (couldn't|it's still open)"); }
+        internal static bool Failed(string result) { return result == ToolPermission.Denied || Regex.IsMatch(result ?? "", @"^(Which app|What should I play|Not (opening|playing) that|No app called|More than one|That didn't work|Couldn't|There's no|That isn't a website|Which job|Not doing that|Should I |Got lost|Ran out of steps|You pressed Esc|You grabbed the mouse|Using the mouse and keyboard isn't)|isn't open\.$|but (couldn't|it's still open)"); }
 
         private static readonly Regex LooseText = new Regex(@"\b(open_app|open_website|media|look_at_screen|play_music|app_window|use_computer)\s*(\{[^{}]*\}|\([^()]*\))");
         private static readonly Regex ToolPair = new Regex(@"[""']?(\w+)[""']?\s*[:=]\s*(?:""([^""]*)""|'([^']*)'|([^,})\s][^,})]*))");
@@ -589,10 +589,11 @@ namespace CapriDesktop
 
         internal static string Address(string site, string search)
         {
-            string host = Regex.Replace((site ?? "").Trim().ToLowerInvariant(), @"^(https?://)?(www\.)?", "");
+            string host = Regex.Replace((site ?? "").Trim(), @"^(https?://)?(www\.)?", "", RegexOptions.IgnoreCase);
             bool searching = !string.IsNullOrWhiteSpace(search);
             if (searching)
             {
+                host = host.ToLowerInvariant();
                 for (int i = 0; i < Searches.GetLength(0); i++)
                 {
                     string key = Searches[i, 0];

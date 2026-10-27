@@ -50,6 +50,9 @@ namespace CapriDesktop
         private readonly ContextMenuStrip speechModelMenu;
         private readonly Label voiceNote;
         private readonly Label updateNote;
+        private readonly Key neon;
+        private INeonRuntime neonRuntime;
+        private NeonConsole neonConsole;
         private readonly Key keyHelp;
         private readonly Label shortcut;
         private bool shortcutReady;
@@ -83,6 +86,7 @@ namespace CapriDesktop
             BackColor = Look.Panel;
             ForeColor = Look.Ink;
             DoubleBuffered = true;
+            AutoScroll = true;
             ClientSize = new Size(Wide, Tall + SetupHeight + KeyRow);
             Caption("MAINFRAME", 26, 20, Look.Mono(13f, FontStyle.Bold, GraphicsUnit.Point), Look.Ink);
             Label build = Caption("v" + version, 200, 20, Look.Mono(8.5f, FontStyle.Regular, GraphicsUnit.Point), Look.Dim);
@@ -183,7 +187,12 @@ namespace CapriDesktop
             Lower(Make("Check for updates", 28, 392 + v, 170, 28, delegate { capri.CheckUpdates(); }));
             Key quit = Lower(Make("Quit Capri", 256, 392 + v, 100, 28, delegate { capri.Quit(); }));
             quit.Accent = Look.Red;
-            updateNote = Lower(Caption("", 28, 430 + v, Look.Mono(8.5f, FontStyle.Regular, GraphicsUnit.Point), Look.Dim));
+            neon = Lower(Make("MEMÓRIA / EVOLUÇÃO", 28, 430 + v, 328, 28, delegate { OpenNeonConsole(); }));
+            neon.Accent = Look.Cyan;
+            neon.Loud = true;
+            neon.Enabled = false;
+            neon.AccessibleDescription = "Abrir memória persistente, propostas de evolução, Guardian e auditoria";
+            updateNote = Lower(Caption("", 28, 464 + v, Look.Mono(8.5f, FontStyle.Regular, GraphicsUnit.Point), Look.Dim));
             Searching();
             Sync();
         }
@@ -275,6 +284,7 @@ namespace CapriDesktop
 
         private void Arrange(bool setupShown)
         {
+            AutoScrollPosition = Point.Empty;
             expanded = setupShown;
             int shift = (setupShown ? SetupHeight : 0) + KeyRow;
             textEntry.Top = Scaled(170 + shift - KeyRow);
@@ -288,8 +298,33 @@ namespace CapriDesktop
             brainNote.MaximumSize = new Size(Scaled(328), 0);
             voiceNote.MaximumSize = new Size(Scaled(328), 0);
             updateNote.MaximumSize = new Size(Scaled(328), 0);
-            ClientSize = new Size(Scaled(Wide), Scaled(Tall + shift));
+            int contentHeight = Scaled(Tall + shift);
+            int availableHeight = Math.Max(300, Screen.FromControl(this).WorkingArea.Height - Scaled(24));
+            AutoScrollMinSize = new Size(0, contentHeight);
+            ClientSize = new Size(Scaled(Wide), Math.Min(contentHeight, availableHeight));
             Invalidate(true);
+        }
+
+        internal void BindNeonRuntime(INeonRuntime runtime)
+        {
+            neonRuntime = runtime;
+            neon.Enabled = runtime != null;
+        }
+
+        private void OpenNeonConsole()
+        {
+            if (neonRuntime == null) return;
+            if (neonConsole == null || neonConsole.IsDisposed)
+            {
+                neonConsole = new NeonConsole(neonRuntime);
+                neonConsole.FormClosed += delegate { neonConsole = null; };
+                neonConsole.Show(this);
+            }
+            else
+            {
+                if (neonConsole.WindowState == FormWindowState.Minimized) neonConsole.WindowState = FormWindowState.Normal;
+                neonConsole.Activate();
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)

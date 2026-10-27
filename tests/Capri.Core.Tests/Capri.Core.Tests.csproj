@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <DefineConstants>$(DefineConstants);CROSS</DefineConstants>
+    <NoWarn>$(NoWarn);CS0649;CS0169;CS0414;CA1416;SYSLIB0014</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../app/CapriProfile.cs" Link="Shared/CapriProfile.cs" />
+    <Compile Include="../../app/ToolPermission.cs" Link="Shared/ToolPermission.cs" />
+    <Compile Include="../../app/CapriStore.cs" Link="Shared/CapriStore.cs" />
+    <Compile Include="../../app/Chronicle.cs" Link="Shared/Chronicle.cs" />
+    <Compile Include="../../app/MemoryCore.cs" Link="Shared/MemoryCore.cs" />
+    <Compile Include="../../app/Guardian.cs" Link="Shared/Guardian.cs" />
+    <Compile Include="../../app/Evolver.cs" Link="Shared/Evolver.cs" />
+    <Compile Include="../../app/EvolutionWorkspace.cs" Link="Shared/EvolutionWorkspace.cs" />
+    <Compile Include="../../app/NeonContracts.cs" Link="Shared/NeonContracts.cs" />
+    <Compile Include="../../app/NeonRuntime.cs" Link="Shared/NeonRuntime.cs" />
+    <Compile Include="../../app/Brain.cs" Link="Shared/Brain.cs" />
+    <Compile Include="../../app/Engine.cs" Link="Shared/Engine.cs" />
+    <Compile Include="../../app/Hands.cs" Link="Shared/Hands.cs" />
+    <Compile Include="../../app/Voice.cs" Link="Shared/Voice.cs" />
+    <Compile Include="../../cross/Native.cs" Link="Shared/Native.cs" />
+    <Content Include="../../CAPRI/PERSONA_DESKTOP.txt" Link="CAPRI/PERSONA_DESKTOP.txt" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

@@ -120,6 +120,18 @@ namespace CapriSetup
                 if (File.Exists(target)) File.Replace(temporary, target, null); else File.Move(temporary, target);
             }
             finally { if (File.Exists(temporary)) File.Delete(temporary); }
+            // The runtime loads this small, editable UTF-8 profile next to the executable.
+            string profileFolder = Path.Combine(destination, "CAPRI");
+            Directory.CreateDirectory(profileFolder);
+            string profilePath = Path.Combine(profileFolder, "PERSONA_DESKTOP.txt");
+            if (!File.Exists(profilePath))
+            {
+                using (Stream profile = Assembly.GetExecutingAssembly().GetManifestResourceStream("Capri.Persona.txt"))
+                {
+                    if (profile == null) throw new InvalidDataException("The Capri personality payload is missing.");
+                    using (FileStream targetProfile = new FileStream(profilePath, FileMode.CreateNew, FileAccess.Write)) profile.CopyTo(targetProfile);
+                }
+            }
             File.Copy(Application.ExecutablePath, Path.Combine(destination, "Uninstall.exe"), true);
             string menu = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Capri.lnk");
             Shortcut(menu, Path.Combine(destination, "Capri.exe"));
@@ -192,6 +204,7 @@ namespace CapriSetup
                 if (File.Exists(uninstaller)) throw new IOException("The uninstaller is still open. Close it and try removing Capri again.");
                 File.Delete(Path.Combine(destination, "Capri.exe"));
                 File.Delete(Path.Combine(destination, ".capri-install"));
+                // Keep user edits to the external profile with the saved settings.
                 string brain = Path.Combine(destination, "brain");
                 if (Directory.Exists(brain)) Directory.Delete(brain, true);
                 DeleteShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Programs), "Capri.lnk"), destination);

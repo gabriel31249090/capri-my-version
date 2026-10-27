@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>Capri-Setup</AssemblyName>
+    <RootNamespace>CapriSetup</RootNamespace>
+    <StartupObject>CapriSetup.Program</StartupObject>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <Version>0.7.0</Version>
+    <ApplicationManifest>app/app.manifest</ApplicationManifest>
+    <ApplicationIcon>assets/chip.ico</ApplicationIcon>
+    <LangVersion>latest</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="all" />
+    <ProjectReference Include="Capri.Windows.csproj" ReferenceOutputAssembly="false" />
+    <Compile Include="app/Setup.cs" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <EmbeddedResource Include=".artifacts/bin/Capri.Windows/$(Configuration)/net48/Capri.exe" LogicalName="Capri.App.exe" />
+    <EmbeddedResource Include="assets/chip.ico" LogicalName="Capri.Chip.ico" />
+    <EmbeddedResource Include="assets/chip.png" LogicalName="Capri.Chip.png" />
+    <EmbeddedResource Include="CAPRI/PERSONA_DESKTOP.txt" LogicalName="Capri.Persona.txt" />
+  </ItemGroup>
+</Project>

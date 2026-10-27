@@ -224,7 +224,7 @@ namespace CapriDesktop
                 if (word == "remove") return "delete";
                 return word;
             }
-            bool enter = (tool == "type" && args.Enter == "yes") || (tool == "press" && Regex.IsMatch(args.Keys ?? "", @"^\s*enter\s*$", RegexOptions.IgnoreCase));
+            bool enter = ToolPermission.SubmitsInput(tool, args.Text, args.Enter, args.Keys);
             if (!enter) return null;
             Target box = (tool == "type" ? target : null) ?? (sight == null ? null : sight.Targets.Find(found => found.Focused));
             string name = box == null ? "" : box.Name;

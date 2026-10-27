@@ -1,0 +1,35 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "output": {
+    "filePath": ".artifacts/context/default.xml",
+    "style": "xml",
+    "parsableStyle": true,
+    "compress": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "showLineNumbers": true,
+    "git": { "sortByChanges": false, "includeDiffs": false, "includeLogs": false }
+  },
+  "include": [
+    "AGENTS.md", "README-CAPRI.md", "docs/architecture.md", "docs/development-workflow.md",
+    "cross/*.csproj", "*.csproj", "*.slnx", "Directory.Build.props", "NuGet.Config",
+    "CAPRI/Modelfile", "CAPRI/*.txt", "repomix.config.json", "package.json"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".tools/**", ".artifacts/**", "node_modules/**", "**/bin/**", "**/obj/**",
+      ".git/**", ".serena/**", ".codex/**", "docs/reference/**", "**/backups/**",
+      "**/cache/**", "**/__pycache__/**", "**/*.generated.*", "**/*.g.cs",
+      "**/*.Designer.cs", "package-lock.json", "**/packages.lock.json",
+      "pnpm-lock.yaml", "yarn.lock", "requirements-tools.lock",
+      "docs/validation-report.md", "docs/token-measurements.json",
+      "**/.env", "**/.env.*", "**/*.pem",
+      "**/*.key", "**/*.pfx", "**/*.p12", "**/secrets.*", "**/credentials.*",
+      "**/preferences.json", "**/history.json", "**/*.log"
+    ]
+  },
+  "security": { "enableSecurityCheck": true },
+  "tokenCount": { "encoding": "o200k_base" }
+}
