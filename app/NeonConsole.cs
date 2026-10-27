@@ -128,7 +128,7 @@ namespace CapriDesktop
             cancel.Text = "Cancelar geração";
             cancel.Dock = DockStyle.Fill;
             cancel.Enabled = false;
-            cancel.Click += delegate { if (generation != null) generation.Cancel(); };
+            cancel.Click += delegate { CancelGeneration(); };
             bottom.Controls.Add(message, 0, 0);
             bottom.Controls.Add(progress, 1, 0);
             bottom.Controls.Add(cancel, 2, 0);
@@ -182,7 +182,7 @@ namespace CapriDesktop
             {
                 if (!busy) return;
                 e.Cancel = true;
-                if (generation != null) { generation.Cancel(); SetMessage("Cancelando geração; aguarde a conclusão."); }
+                if (generation != null) { CancelGeneration(); SetMessage("Cancelando geração; aguarde a conclusão."); }
                 else SetMessage("Aguarde a operação em andamento antes de fechar.");
             };
             KeyDown += delegate(object sender, KeyEventArgs e)
@@ -207,7 +207,7 @@ namespace CapriDesktop
             {
                 heartbeat.Stop();
                 heartbeat.Dispose();
-                if (generation != null) generation.Cancel();
+                CancelGeneration();
             }
             base.Dispose(disposing);
         }
@@ -569,14 +569,26 @@ namespace CapriDesktop
 
         private async Task RefreshAllAsync()
         {
+            string selectedTarget = target.SelectedItem as string;
             await RefreshStatusAsync();
             await RefreshMemoryAsync();
             string[] names = await runtime.ListEvolutionTargetsAsync();
             target.Items.Clear();
             foreach (string name in names ?? new string[0]) target.Items.Add(name);
-            if (target.Items.Count > 0) target.SelectedIndex = 0;
+            if (selectedTarget != null && target.Items.Contains(selectedTarget))
+                target.SelectedItem = selectedTarget;
+            else if (target.Items.Count > 0)
+                target.SelectedIndex = 0;
             await RefreshProposalsAsync(null);
             await RefreshAuditAsync();
+        }
+
+        private void CancelGeneration()
+        {
+            CancellationTokenSource pending = generation;
+            if (pending == null) return;
+            try { pending.Cancel(); }
+            catch (ObjectDisposedException) { }
         }
 
         private async Task RefreshStatusAsync()

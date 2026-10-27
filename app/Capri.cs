@@ -458,6 +458,8 @@ namespace CapriDesktop
         private const double MouthRate = 12;
         private readonly Brain brain = new Brain();
         private NeonRuntime neon;
+        private bool sessionSwitchSubscribed;
+        private bool displaySettingsSubscribed;
         private System.Collections.Generic.List<string> cloudModels;
         private readonly System.Collections.Generic.HashSet<string> stalled = new System.Collections.Generic.HashSet<string>();
         private readonly TalkPill pill = new TalkPill();
@@ -643,6 +645,7 @@ namespace CapriDesktop
                 ConfirmTool, AuthenticateOwner);
             mainframe.BindNeonRuntime(neon);
             Microsoft.Win32.SystemEvents.SessionSwitch += OwnerSessionChanged;
+            sessionSwitchSubscribed = true;
             mainframe.ShowTextKey(textKey == null ? null : Voice.Tail(textKey));
             voice.VoiceId = string.IsNullOrEmpty(preferences.VoiceId) ? null : preferences.VoiceId;
             voice.Model = string.IsNullOrEmpty(preferences.VoiceModel) ? null : preferences.VoiceModel;
@@ -682,6 +685,7 @@ namespace CapriDesktop
             anchor = KeepOnScreen(anchor);
             Location = anchor;
             Microsoft.Win32.SystemEvents.DisplaySettingsChanged += DisplaysChanged;
+            displaySettingsSubscribed = true;
         }
 
         protected override bool ShowWithoutActivation { get { return true; } }
@@ -3016,9 +3020,7 @@ namespace CapriDesktop
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            Microsoft.Win32.SystemEvents.DisplaySettingsChanged -= DisplaysChanged;
-            Microsoft.Win32.SystemEvents.SessionSwitch -= OwnerSessionChanged;
-            if (neon != null) neon.Dispose();
+            UnsubscribeSystemEvents();
             StopRide();
             clickDelay.Stop();
             frames.Stop();
@@ -3042,6 +3044,12 @@ namespace CapriDesktop
         {
             if (disposing)
             {
+                UnsubscribeSystemEvents();
+                if (neon != null)
+                {
+                    neon.Dispose();
+                    neon = null;
+                }
                 clickDelay.Dispose();
                 frames.Dispose();
                 signals.Dispose();
@@ -3055,6 +3063,20 @@ namespace CapriDesktop
                 if (frame != null) frame.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void UnsubscribeSystemEvents()
+        {
+            if (displaySettingsSubscribed)
+            {
+                Microsoft.Win32.SystemEvents.DisplaySettingsChanged -= DisplaysChanged;
+                displaySettingsSubscribed = false;
+            }
+            if (sessionSwitchSubscribed)
+            {
+                Microsoft.Win32.SystemEvents.SessionSwitch -= OwnerSessionChanged;
+                sessionSwitchSubscribed = false;
+            }
         }
 
         internal void StartSmokeTest(string output)

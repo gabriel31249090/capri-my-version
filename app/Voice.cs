@@ -57,6 +57,7 @@ namespace CapriDesktop
         internal volatile string Key;
         internal volatile string VoiceId;
         internal volatile string Model;
+        private readonly object playerGate = new object();
 #if CROSS
         internal static Action<byte[]> Playback;
         internal static Action Silence;
@@ -347,9 +348,12 @@ namespace CapriDesktop
 #if CROSS
             if (Playback != null) Playback(wav);
 #else
-            Stop();
-            player = new SoundPlayer(new MemoryStream(wav));
-            player.Play();
+            lock (playerGate)
+            {
+                Stop();
+                player = new SoundPlayer(new MemoryStream(wav));
+                player.Play();
+            }
 #endif
         }
 
@@ -358,10 +362,13 @@ namespace CapriDesktop
 #if CROSS
             if (Silence != null) Silence();
 #else
-            if (player == null) return;
-            player.Stop();
-            player.Dispose();
-            player = null;
+            lock (playerGate)
+            {
+                if (player == null) return;
+                player.Stop();
+                player.Dispose();
+                player = null;
+            }
 #endif
         }
     }

@@ -566,7 +566,8 @@ namespace CapriDesktop
 
         private static void Start(string id)
         {
-            using (Process.Start(Launch(id))) { }
+            try { using (Process.Start(Launch(id))) { } }
+            catch (System.ComponentModel.Win32Exception) { }
         }
 
         internal static ProcessStartInfo Launch(string id)
